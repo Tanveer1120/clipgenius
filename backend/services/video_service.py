@@ -39,9 +39,15 @@ def get_binary(name: str) -> str:
 FFMPEG_BIN = get_binary("ffmpeg")
 FFPROBE_BIN = get_binary("ffprobe")
 
-UPLOAD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "uploads"))
-OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "outputs"))
-TEMP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "temp"))
+# Vercel serverless filesystem is read-only except /tmp
+if os.environ.get("VERCEL") == "1":
+    UPLOAD_DIR = "/tmp/uploads"
+    OUTPUT_DIR = "/tmp/outputs"
+    TEMP_DIR = "/tmp/temp"
+else:
+    UPLOAD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "uploads"))
+    OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "outputs"))
+    TEMP_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "temp"))
 
 for d in [UPLOAD_DIR, OUTPUT_DIR, TEMP_DIR]:
     os.makedirs(d, exist_ok=True)

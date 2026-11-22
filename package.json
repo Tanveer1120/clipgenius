@@ -1,0 +1,24 @@
+{
+  "name": "clipgenius-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CLIPGENIUS AI - Unified AI Video Clipping Platform",
+  "scripts": {
+    "dev": "python run_unified.py",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "python run_backend.py",
+    "build": "cd frontend && npm install && npm run build",
+    "start": "python run_backend.py"
+  },
+  "keywords": [
+    "ai",
+    "video-clipping",
+    "shorts",
+    "opusclip-alternative",
+    "ffmpeg",
+    "fastapi",
+    "react"
+  ],
+  "author": "ClipGenius AI",
+  "license": "MIT"
+}

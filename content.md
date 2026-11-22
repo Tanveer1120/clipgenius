@@ -182,3 +182,29 @@ clipping/
 2. **Manual Launch**:
    - Backend: `python run_backend.py` -> `http://127.0.0.1:8000`
    - Frontend: `cd frontend && npm run dev` -> `http://localhost:5173`
+
+
+---
+
+## 7. Unified Service & Vercel Deployment Configuration
+
+### Single Unified Project Architecture
+The project is configured as a single unified repository ready to be imported directly into Vercel with zero multi-project configuration:
+- **`vercel.json`**:
+  - `buildCommand`: `cd frontend && npm install && npm run build`
+  - `outputDirectory`: `frontend/dist`
+  - `rewrites`: Automatically routes `/api/(.*)` to the Python Serverless entry point `api/index.py`, `/uploads/(.*)` and `/outputs/(.*)` to the FastAPI static router, and all other routes to the single-page application `index.html`.
+- **`api/index.py`**:
+  - Direct Vercel Serverless Function entry point exporting `app = FastAPI(...)` from `backend.main`.
+- **`requirements.txt`**:
+  - Root Python dependencies file automatically installed by Vercel's Python runtime.
+- **`package.json`**:
+  - Root Node.js file providing `"dev": "python run_unified.py"` and `"build": "cd frontend && npm install && npm run build"`.
+- **`run_unified.py`**:
+  - Launches both the FastAPI backend (`http://127.0.0.1:8000`) and the Vite React frontend (`http://localhost:5173`) concurrently in a single terminal process.
+
+### How to Deploy on Vercel:
+1. Connect your GitHub repository `https://github.com/Tanveer1120/clipgenius.git` to Vercel.
+2. Select **Root Directory** as `./` (default).
+3. Vercel automatically detects `vercel.json`, `package.json`, and `api/index.py`.
+4. Click **Deploy**!
