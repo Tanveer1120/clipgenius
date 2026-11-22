@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Python cache & virtual environments
+__pycache__/
+*/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Build artifacts
+dist/
+build/
+*/dist/
+
+# Large binaries & media files
+*.exe
+*.dll
+uploads/*
+!uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep
+temp/*
+!temp/.gitkeep
+
+# Environment and debug logs
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
+debug_render.py
+test_pipeline.py

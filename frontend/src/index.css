@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #0a0b10;
+    --bg-card: #12141f;
+    --bg-card-hover: #191c2b;
+    --accent-purple: #8b5cf6;
+    --accent-blue: #3b82f6;
+    --accent-pink: #ec4899;
+    --accent-cyan: #06b6d4;
+  }
+
+  body {
+    background-color: #08090d;
+    color: #f3f4f6;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0f18;
+}
+::-webkit-scrollbar-thumb {
+  background: #272c42;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3c4466;
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.4);
+}
+.glow-blue {
+  box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.4);
+}
+.glow-accent {
+  box-shadow: 0 0 35px -5px rgba(124, 58, 237, 0.35);
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(60deg, #8b5cf6, #3b82f6, #ec4899);
+  padding: 1px;
+  border-radius: 1rem;
+}
+.gradient-border-inner {
+  background: #0e111a;
+  border-radius: calc(1rem - 1px);
+}
+
+/* Animation utilities */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
